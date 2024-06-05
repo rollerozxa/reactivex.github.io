@@ -128,20 +128,18 @@
   <div class="row">
     <div class="col-sm-8">
       <h1>Subject</h1>
-
 <p>
  A Subject is a sort of bridge or proxy that is available in some implementations of ReactiveX that acts both as
  an observer and as an Observable. Because it is an observer, it can subscribe to one or more Observables, and
  because it is an Observable, it can pass through the items it observes by reemitting them, and it can also emit
  new items.
-</p><p>
+</p>
+<p>
  Because a Subject subscribes to an Observable, it will trigger that Observable to begin emitting items (if that
  Observable is “cold” — that is, if it waits for a subscription before it begins to emit items). This can have
  the effect of making the resulting Subject a “hot” Observable variant of the original “cold” Observable.
 </p>
-
 <h4>See Also</h4>
-
 <ul>
  <li><a href="http://davesexton.com/blog/post/To-Use-Subject-Or-Not-To-Use-Subject.aspx">To Use or Not to Use Subject</a> from <cite>Dave Sexton&#8217;s blog</cite></li>
  <li><a href="http://www.introtorx.com/Content/v1.0.10621.0/02_KeyTypes.html#Subject"><cite>Introduction to Rx</cite>: Subject</a></li>
@@ -149,17 +147,13 @@
  <li><a href="http://akarnokd.blogspot.hu/2015/06/subjects-part-1.html">Advanced RxJava: Subject</a> by Dávid Karnok</li>
  <li><a href="http://xgrommx.github.io/rx-book/content/getting_started_with_rxjs/subjects.html">Using Subjects</a> by Dennis Stoyanov</li>
 </ul>
-
 <h2>Varieties of Subject</h2>
-
 <p>
  There are four varieties of <code>Subject</code> that are designed for particular use cases. Not all of these
  are available in all implementations, and some implementations use other naming conventions (for example, in
  RxScala, what is called a “PublishSubject” here is known simply as a “Subject”):
 </p>
-
 <h3>AsyncSubject</h3>
-
 <figure>
  <img src="/documentation/operators/images/S.AsyncSubject.png" style="width:100%;" />
  <figcaption><p>
@@ -168,7 +162,6 @@
   <code>AsyncSubject</code> also completes without emitting any values.)
  </p></figcaption>
 </figure>
-
 <figure>
  <img src="/documentation/operators/images/S.AsyncSubject.e.png" style="width:100%;" />
  <figcaption><p>
@@ -177,15 +170,11 @@
   the error notification from the source Observable.
  </p></figcaption>
 </figure>
-
 <h4>See Also</h4>
-
 <ul>
  <li><a href="http://www.introtorx.com/Content/v1.0.10621.0/02_KeyTypes.html#AsyncSubject"><cite>Introduction to Rx</cite>: AsyncSubject</a></li>
 </ul>
-
 <h3>BehaviorSubject</h3>
-
 <figure>
  <img src="/documentation/operators/images/S.BehaviorSubject.png" style="width:100%;" />
  <figcaption><p>
@@ -194,7 +183,6 @@
   emit any other items emitted later by the source Observable(s).
  </p></figcaption>
 </figure>
-
 <figure>
  <img src="/documentation/operators/images/S.BehaviorSubject.e.png" style="width:100%;" />
  <figcaption><p>
@@ -202,15 +190,11 @@
   items to subsequent observers, but will simply pass along the error notification from the source Observable.
  </p></figcaption>
 </figure>
-
 <h4>See Also</h4>
-
 <ul>
  <li><a href="http://www.introtorx.com/Content/v1.0.10621.0/02_KeyTypes.html#BehaviorSubject"><cite>Introduction to Rx</cite>: BehaviorSubject</a></li>
 </ul>
-
 <h3>PublishSubject</h3>
-
 <figure>
  <img src="/documentation/operators/images/S.PublishSubject.png" style="width:100%;" />
  <figcaption><p>
@@ -226,7 +210,6 @@
   using a <code>ReplaySubject</code> instead.
  </p></figcaption>
 </figure>
-
 <figure>
  <img src="/documentation/operators/images/S.PublishSubject.e.png" style="width:100%;" />
  <figcaption><p>
@@ -234,9 +217,7 @@
   subsequent observers, but will simply pass along the error notification from the source Observable.
  </p></figcaption>
 </figure>
-
 <h3>ReplaySubject</h3>
-
 <figure>
  <img src="/documentation/operators/images/S.ReplaySubject.png" style="width:100%;" />
  <figcaption><p>
@@ -253,9 +234,7 @@
   ambiguity in the resulting Subject as to which item or notification should be replayed first.
  </p></figcaption>
 </figure>
-
 <h4>See Also</h4>
-
 <ul>
  <li><a href="http://www.introtorx.com/Content/v1.0.10621.0/02_KeyTypes.html#ReplaySubject"><cite>Introduction to Rx</cite>: ReplaySubject</a></li>
 </ul>
@@ -507,6 +486,7 @@
     </div>
     <div class="col-sm-4">
       <ul class="side-menu">
+        <li><a href="/documentation/cn/pt-br/subject.html">简体中文</a></li>
         <li><a href="/documentation/ko/pt-br/subject.html">한국어</a></li>
         <li><a href="/documentation/pt-br/subject.html">English</a></li>
       </ul>

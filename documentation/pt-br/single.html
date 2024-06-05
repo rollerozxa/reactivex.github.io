@@ -128,35 +128,36 @@
   <div class="row">
     <div class="col-sm-8">
       <h1>Single</h1>
-
 <p>
  RxJava (and its derivatives like RxGroovy &amp; RxScala) has developed an
  <a href="observable.html">Observable</a> variant called &ldquo;Single.&rdquo;
-</p><p>
+</p>
+<p>
  A Single is something like an Observable, but instead of emitting a series of values &mdash; anywhere from none
  at all to an infinite number &mdash; it always either emits one value or an error notification.
-</p><p>
+</p>
+<p>
  For this reason, instead of subscribing to a Single with the three methods you use to respond to notifications
  from an Observable (<tt>onNext</tt>, <tt>onError</tt>, and <tt>onCompleted</tt>), you only use two methods to
  subscribe:
-</p><dl>
+</p>
+<dl>
  <dt>onSuccess</dt>
   <dd>a Single passes this method the sole item that the Single emits</dd>
  <dt>onError</dt>
   <dd>a Single passes this method the Throwable that caused the Single to be unable to emit an item</dd>
-</dl><p>
+</dl>
+<p>
  A Single will call only one of these methods, and will only call it once. Upon calling either method, the
  Single terminates and the subscription to it ends.
 </p>
 
 <h1>Composition via Single Operators</h1>
-
 <p>
  Like Observables, Singles can be manipulated by means of a variety of operators. Some operators also allow
  for an interface between the Observable world and the Single world so that you can mix the two varieties:
 </p>
-
-<table>
+<table class="table table-striped">
  <thead>
   <tr><th>operator</th><th>returns</th><th>description</th></tr>
  </thead>
@@ -184,41 +185,39 @@
   <tr><td><tt>zip</tt> and <tt>zipWith</tt></td><td><tt>Single</tt></td><td>returns a Single that emits an item that is the result of a function applied to items emitted by two or more other Singles</td></tr>
  </tbody>
 </table>
-
 <p>
  The following sections of this page will give marble diagrams that explain these operators schematically. This
  diagram explains how Singles are represented in marble diagrams:
 </p>
-
-<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.legend.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.legend.png" width="100%" /></p>
 <h2>compose</h2>
 <h2>concat and concatWith</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.concat.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.concat.png" width="100%" /></p>
 <p>
  There is also an instance version of this operator:
 </p>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.concatWith.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.concatWith.png" width="100%" /></p>
 <h2>create</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.create.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.create.png" width="100%" /></p>
 <h2>delay</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.delay.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.delay.png" width="100%" /></p>
 <p>
  There is also a version of this operator that allows you to perform the delay on a particular
  <a href="scheduler.html">Scheduler</a>:
 </p>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.delay.s.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.delay.s.png" width="100%" /></p>
 <h2>doOnError</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.doOnError.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.doOnError.png" width="100%" /></p>
 <h2>doOnSuccess</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.doOnSuccess.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.doOnSuccess.png" width="100%" /></p>
 <h2>error</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.error.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.error.png" width="100%" /></p>
 <h2>flatMap</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.flatMap.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.flatMap.png" width="100%" /></p>
 <h2>flatMapObservable</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.flatMapObservable.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.flatMapObservable.png" width="100%" /></p>
 <h2>from</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.from.Future.png" width="100%" />
+<p><img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.from.Future.png" width="100%" /></p>
 <p>There is also a variety that takes a <a href="scheduler.html">Scheduler</a> as an argument:
 <img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.from.Future.s.png" width="100%" />
 <h2>just</h2>
@@ -265,11 +264,13 @@
 <h2>toObservable</h2>
 <img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.toObservable.png" width="100%" />
 <h2>zip and zipWith</h2>
-<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.zip.png" width="100%" /></p>
+<img src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/Single.zip.png" width="100%" />
+</p>
 
     </div>
     <div class="col-sm-4">
       <ul class="side-menu">
+        <li><a href="/documentation/cn/pt-br/single.html">简体中文</a></li>
         <li><a href="/documentation/ko/pt-br/single.html">한국어</a></li>
         <li><a href="/documentation/pt-br/single.html">English</a></li>
       </ul>

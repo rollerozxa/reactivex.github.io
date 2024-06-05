@@ -127,14 +127,14 @@
 <div class="full-page-container">
   <div class="row">
     <div class="col-sm-8">
-      <h1 id="plugins">Plugins</h1>
+      <p>#Plugins</p>
 
 <p>Os plugins permitem modificar o comportamento padrão do RxJava 1.x em vários aspectos:</p>
 
 <ul>
-<li>Alterando o conjunto de computação predefinida, i / o, e novo thread Schedulers</li>
-<li>Registrando um manipulador para erros extraordinários que RxJava pode encontrar</li>
-<li>Registrando funções que podem tomar nota da ocorrência de várias atividades regulares do RxJava</li>
+  <li>Alterando o conjunto de computação predefinida, i / o, e novo thread Schedulers</li>
+  <li>Registrando um manipulador para erros extraordinários que RxJava pode encontrar</li>
+  <li>Registrando funções que podem tomar nota da ocorrência de várias atividades regulares do RxJava</li>
 </ul>
 
 <h2 id="rxjavadefaultschedulers">RxJavaDefaultSchedulers</h2>
@@ -142,17 +142,17 @@
 <p>Este plugin permite que você substitua o cálculo padrão, i / o, e novo segmento Programadores com Programadores de sua escolha. Para fazer isso, estenda a classe <code>RxJavaDefaultSchedulers</code>  e substitua estes métodos:</p>
 
 <ul>
-<li><code>Scheduler getComputationScheduler( )</code></li>
-<li><code>Scheduler getIOScheduler( )</code></li>
-<li><code>Scheduler getNewThreadScheduler( )</code></li>
+  <li><code>Scheduler getComputationScheduler( )</code></li>
+  <li><code>Scheduler getIOScheduler( )</code></li>
+  <li><code>Scheduler getNewThreadScheduler( )</code></li>
 </ul>
 
 <p>Em seguida, siga estes passos:</p>
 
 <ol>
-<li>Crie um objeto da nova subclasse <code>RxJavaDefaultSchedulers</code> que você implementou.</li>
-<li>Obter a instância global do <code>RxJavaPlugins</code> através do <code>RxJavaPlugins.getInstance( )</code>.</li>
-<li>Passe seu objeto de agendador padrão para o método <code>registerDefaultSchedulers( )</code> dessa instância.</li>
+  <li>Crie um objeto da nova subclasse <code>RxJavaDefaultSchedulers</code> que você implementou.</li>
+  <li>Obter a instância global do <code>RxJavaPlugins</code> através do <code>RxJavaPlugins.getInstance( )</code>.</li>
+  <li>Passe seu objeto de agendador padrão para o método <code>registerDefaultSchedulers( )</code> dessa instância.</li>
 </ol>
 
 <p>Quando você fizer isso, RxJava começará a usar os Schedulers retornados por seus métodos em vez de seus padrões internos.</p>
@@ -162,15 +162,15 @@
 <p>Este plugin permite que você registre uma função que lida com erros que são gerados pelo RxJava, mas que não podem ser manipulados pelo processo de notificação RxJava <code>onError</code> normal (por exemplo, se RxJava tentar propagar um erro para um assinante que não implementou um Manipulador <code>onError</code>). Para fazer isso, estenda a classe  <code>RxJavaErrorHandler</code> e substitua este método:</p>
 
 <ul>
-<li><code>void handleError(Throwable e)</code></li>
+  <li><code>void handleError(Throwable e)</code></li>
 </ul>
 
 <p>Em seguida, siga estes passos:</p>
 
 <ol>
-<li>Crie um objeto da nova subclasse <code>RxJavaErrorHandler</code> que você implementou.</li>
-<li>Obtenha a instância global do<code>RxJavaPlugins</code> através de <code>RxJavaPlugins.getInstance( )</code>.</li>
-<li>Passe seu objeto manipulador de erro para o método <code>registerErrorHandler( )</code>dessa instância.</li>
+  <li>Crie um objeto da nova subclasse <code>RxJavaErrorHandler</code> que você implementou.</li>
+  <li>Obtenha a instância global do<code>RxJavaPlugins</code> através de <code>RxJavaPlugins.getInstance( )</code>.</li>
+  <li>Passe seu objeto manipulador de erro para o método <code>registerErrorHandler( )</code>dessa instância.</li>
 </ol>
 
 <p>Quando você fizer isso, RxJava começará a usar seu manipulador de erro para erros de campo que não podem ser manipulados de maneiras comuns.</p>
@@ -179,9 +179,11 @@
 
 <p>Esse plugin permite que você registre funções que o RxJava irá chamar em certas atividades regulares do RxJava, por exemplo, para fins de registro ou de coleta de métricas. Para fazer isso, estenda a classe <code>RxJavaObservableExecutionHook</code> e substitua qualquer um ou todos estes métodos:</p>
 
-<table><thead>
- <tr><th>Método</th><th>Quando invocado</th></tr>
- </thead><tbody>
+<table class="table table-striped">
+ <thead>
+  <tr><th>Método</th><th>Quando invocado</th></tr>
+ </thead>
+ <tbody>
   <tr><td><tt>onCreate( )</tt></td><td>durante <tt>Observable.create( )</tt></td></tr>
   <tr><td><tt>onSubscribeStart( )</tt></td><td>Imediatamente antes <tt>Observable.subscribe( )</tt></td></tr>
   <tr><td><tt>onSubscribeReturn( )</tt></td><td>imediatamente depois <tt>Observable.subscribe( )</tt></td></tr>
@@ -193,9 +195,9 @@
 <p>Em seguida, siga estes passos:</p>
 
 <ol>
-<li>Crie um objeto da nova subclasse <code>RxJavaObservableExecutionHook</code>  que você implementou.</li>
-<li>Obtenha a instância global do  <code>RxJavaPlugins</code> através de <code>RxJavaPlugins.getInstance( )</code>.</li>
-<li>Passe seu objeto hooks de execução para o método <code>registerObservableExecutionHook( )</code> dessa instância.</li>
+  <li>Crie um objeto da nova subclasse <code>RxJavaObservableExecutionHook</code>  que você implementou.</li>
+  <li>Obtenha a instância global do  <code>RxJavaPlugins</code> através de <code>RxJavaPlugins.getInstance( )</code>.</li>
+  <li>Passe seu objeto hooks de execução para o método <code>registerObservableExecutionHook( )</code> dessa instância.</li>
 </ol>
 
 <p>Quando você fizer isso, RxJava vai começar a chamar suas funções quando ele encontra as condições específicas que foram concebidos para tomar nota.</p>
@@ -203,6 +205,7 @@
     </div>
     <div class="col-sm-4">
       <ul class="side-menu">
+        <li><a href="/documentation/cn/pt-br/plugins.html">简体中文</a></li>
         <li><a href="/documentation/ko/pt-br/plugins.html">한국어</a></li>
         <li><a href="/documentation/pt-br/plugins.html">English</a></li>
       </ul>
