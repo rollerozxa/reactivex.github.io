@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ReactiveX - Languages</title>
+    <title>ReactiveX - ThrottleLatest operator</title>
 
 
     <!-- Bootstrap -->
@@ -111,41 +111,127 @@
     <script src="/js/jquery/1.11.0/jquery.min.js"></script>
 
     <div class="site-content">
-      <div class="container">
-  <div class="col-md-8 col-md-offset-2">
-    <h2 id="languages">Languages</h2>
+      <style>
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+  .side-menu {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    max-height: none;
+    border: 1px solid #DDD;
+  }
+}
+</style>
 
-<ul>
-  <li>Java: <a href="https://github.com/ReactiveX/RxJava">RxJava</a></li>
-  <li>JavaScript: <a href="https://github.com/ReactiveX/rxjs">RxJS</a></li>
-  <li>C#: <a href="https://github.com/Reactive-Extensions/Rx.NET">Rx.NET</a></li>
-  <li>C#(Unity): <a href="https://github.com/neuecc/UniRx">UniRx</a> (no further developments)</li>
-  <li>Scala: <a href="https://github.com/ReactiveX/RxScala">RxScala</a></li>
-  <li>Clojure: <a href="https://github.com/ReactiveX/RxClojure">RxClojure</a></li>
-  <li>C++: <a href="https://github.com/Reactive-Extensions/RxCpp">RxCpp</a></li>
-  <li>Lua: <a href="https://github.com/bjornbytes/RxLua">RxLua</a></li>
-  <li>Perl: <a href="https://metacpan.org/pod/RxPerl">RxPerl</a></li>
-  <li>Ruby: <a href="https://github.com/Reactive-Extensions/Rx.rb">Rx.rb</a></li>
-  <li>Python: <a href="https://github.com/ReactiveX/RxPY">RxPY</a></li>
-  <li>Go: <a href="https://github.com/ReactiveX/RxGo">RxGo</a></li>
-  <li>Groovy: <a href="https://github.com/ReactiveX/RxGroovy">RxGroovy</a></li>
-  <li>JRuby: <a href="https://github.com/ReactiveX/RxJRuby">RxJRuby</a></li>
-  <li>Kotlin(RxJava): <a href="https://github.com/ReactiveX/RxKotlin">RxKotlin</a></li>
-  <li>Kotlin(Multiplatform): <a href="https://github.com/badoo/Reaktive">Reaktive</a></li>
-  <li>Swift: <a href="https://github.com/kzaher/RxSwift">RxSwift</a></li>
-  <li>PHP: <a href="https://github.com/ReactiveX/RxPHP">RxPHP</a></li>
-  <li>Elixir: <a href="https://github.com/alfert/reaxive">reaxive</a></li>
-  <li>Dart: <a href="https://github.com/ReactiveX/rxdart">RxDart</a></li>
-</ul>
+<div class="full-page-container">
+  <div class="row">
+    <div class="col-sm-8">
+      <ol class="breadcrumb">
+  <li><a href="/documentation/operators.html">Operators</a></li>
+  <li><a href="/documentation/operators.html#filtering">Filtering</a></li>
+  <li class="active">Sample</li>
+</ol>
 
-<h2 id="reactivex-for-platforms-and-frameworks">ReactiveX for platforms and frameworks</h2>
+   <h1>ThrottleLatest</h1>
+   <h3>throttles items from the current Observable by first emitting the next item from upstream, then periodically emitting the latest item (if any) when the specified timeout elapses between them</h3>
+   <figure class="rxmarbles-figure">
+    <rx-marbles key="throttlelatest"></rx-marbles>
+    <figcaption><p>
+     The <span class="operator">ThrottleLatest</span> throttles items from the current Observable by first emitting the next item from upstream, then periodically emitting the latest item (if any) when the specified timeout elapses between them.
+    </p><p>
+     Also known as <span class="operator">conflate</span>: it is a combination of <span class="operator">throttleFirst</span> and <span class="operator">sample</span> whereby frequent items are sampled but the first item outside the sampling window will be emitted immediately    
+    </p></figcaption>
+   </figure>
 
-<ul>
-  <li><a href="https://github.com/ReactiveX/RxNetty">RxNetty</a></li>
-  <li><a href="https://github.com/ReactiveX/RxAndroid">RxAndroid</a></li>
-  <li><a href="https://github.com/kzaher/RxSwift">RxCocoa</a></li>
-</ul>
+   <h4>See Also</h4>
+   <ul>
+    <li><a href="backpressure.html">Backpressure-related Operators</a></li>
+    <li><a href="sample.html"><span class="operator">Sample</span></a></li>
+    <li><a href="sample.html"><span class="operator">ThrottleFirst</span></a></li>
+   </ul>
 
+   <h2>Language-Specific Information:</h2>
+
+<div class="panel-group operators-by-language" id="accordion" role="tablist" aria-multiselectable="true">
+
+  
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingRxJava&nbsp;3․x">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseRxJava&nbsp;3․x" aria-expanded="true" aria-controls="collapseRxJava&nbsp;3․x">
+              RxJava&nbsp;3․x <code>throttleLatest</code>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseRxJava&nbsp;3․x" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingRxJava&nbsp;3․x">
+          <div class="panel-body">
+            
+     <p>
+      If no items were emitted from the upstream during this timeout phase, the next upstream item is emitted immediately and the timeout window starts from then.
+     </p>
+     <p>
+      Multiple overloads are available which allows specifying if the very last item (if any) should be emitted upon termination, which scheduler to use and to
+      have a callback for the items dropped.
+     </p>
+     <figure>
+      <img src="images/throttlelatest.png" style="width:100%;" alt="sample" />
+      <figcaption><p>
+       One variant of <code>throttleLatest</code> that operates at a periodic time
+       interval that you choose by passing in a <code>TimeUnit</code> and a quantity of such units as parameters
+       to <code>throttleLatest</code>.
+      </p><p>
+       This variant of <code>throttleLatest</code> operates by default on the <code>computation</code>
+       <a href="../scheduler.html">Scheduler</a>, but you can optionally pass in a Scheduler of your choosing as
+       a third parameter.
+      </p>
+      <ul>
+       <li>Javadoc: <a href="https://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Observable.html#throttleLatest-long-java.util.concurrent.TimeUnit-"><code>throttleLatest(long,TimeUnit)</code></a></li>
+       <li>Javadoc: <a href="https://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Observable.html#throttleLatest-long-java.util.concurrent.TimeUnit-io.reactivex.rxjava3.core.Scheduler-"><code>throttleLatest(long,TimeUnit,Scheduler)</code></a> and <a href="http://reactivex.io/RxJava/javadoc/rx/Observable.html#throttleLast(long,%20java.util.concurrent.TimeUnit,%20rx.Scheduler)"><code>throttleLast(long,TimeUnit,Scheduler)</code></a></li>
+      </ul></figcaption>
+     </figure>
+     <figure>
+      <img src="images/throttlelatest.e.png" style="width:100%;" alt="sample" />
+      <figcaption><p>
+       This variant can optionally emit the very last item (if any) when the source terminates.
+      </p><p>
+       This variant of <code>throttleLatest</code> operates by default on the <code>computation</code>
+       <a href="../scheduler.html">Scheduler</a>, but you can optionally pass in a Scheduler of your choosing as
+       a third parameter.
+      </p>
+      <ul>
+       <li>Javadoc: <a href="https://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Observable.html#throttleLatest-long-java.util.concurrent.TimeUnit-boolean-"><code>throttleLatest(long,TimeUnit,bool)</code></a></li>
+       <li>Javadoc: <a href="https://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Observable.html#throttleLatest-long-java.util.concurrent.TimeUnit-io.reactivex.rxjava3.core.Scheduler-boolean-"><code>throttleLatest(long,TimeUnit,Scheduler,bool)</code></a></li>
+       <li>Javadoc: <a href="https://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Observable.html#throttleLatest-long-java.util.concurrent.TimeUnit-io.reactivex.rxjava3.core.Scheduler-boolean-io.reactivex.rxjava3.functions.Consumer-"><code>throttleLatest(long,TimeUnit,Scheduler,bool,Consumer)</code></a></li>
+      </ul></figcaption>
+     </figure>
+  
+          </div>
+        </div>
+      </div>
+      
+
+</div>
+
+    </div>
+    <div class="col-sm-4">
+      <ul class="side-menu">
+        <li><a href="/documentation/cn/operators/throttlelatest.html">简体中文</a></li>
+        <li><a href="/documentation/ko/operators/throttlelatest.html">한국어</a></li>
+        <li><a href="/documentation/id/operators/throttlelatest.html">Bahasa Indonesia</a></li>
+        <li><a href="/documentation/operators/throttlelatest.html">English</a></li>
+      </ul>
+
+      <ul class="side-menu">
+        
+        <li><a href="/documentation/observable.html">Observable</a></li>
+        <li><a href="/documentation/operators.html">Operators</a></li>
+        <li><a href="/documentation/single.html">Single</a></li>
+        <li><a href="/documentation/subject.html">Subject</a></li>
+        <li><a href="/documentation/scheduler.html">Scheduler</a></li>
+        
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -226,7 +312,7 @@
     </span>
 
     <!-- Activate current page menu button -->
-    <script>$("#menu-languages").addClass("active");</script>
+    <script>$("#menu-throttlelatest").addClass("active");</script>
 
     <!-- Polymer Paper Tabs -->
     <link rel="import" href="/polymer/components/paper-tabs/paper-tabs.html" />
